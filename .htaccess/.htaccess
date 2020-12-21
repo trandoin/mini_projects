@@ -1,0 +1,14 @@
+RewriteEngine On
+AuthType Basic
+AuthName "Restricted Content"
+AuthUserFile D:\NITJ\.htpasswd
+Require valid-user
+
+<FilesMatch "\.(jpg|jpeg|png|gif|swf)$">
+Header set Cache-Control "max-age=604800, public"
+</FilesMatch>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
+RewriteRule ^hello index.php
