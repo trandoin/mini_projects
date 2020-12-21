@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
 		$file = $_FILES['images']['name'][$key];
 		$file_temp = $_FILES['images']['tmp_name'][$key];
 		move_uploaded_file($file_temp, $location.$file);
-		$data .=$file.'';
+		$data .=$file.' ';
 	}
 	
 	$query = "INSERT INTO images (images) values ('$data') ";
@@ -39,6 +39,8 @@ if (isset($_POST['submit'])) {
 <form action="" method="post" enctype="multipart/form-data">
 	<input type="file" name="images[]" multiple="">
 	<input type="submit" name="submit" value="Submit">
-</form>
+</form><br><br>
+<a href="dis.php">View</a>
+
 </body>
 </html>
